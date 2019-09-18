@@ -1,5 +1,5 @@
 {
-  "name": "node_demo_one",
+  "name": "cscd311_project",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.1.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
