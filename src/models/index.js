@@ -1,15 +1,15 @@
 // Sample Data
 
-let users = {
-  1: {
+let users = [
+  {
     id: '1',
     username: 'Remus',
   },
-  2: {
+  {
     id: '2',
     username: 'Demi',
   },
-};
+];
 let messages = {
   1: {
     messageId: '1',
@@ -19,7 +19,7 @@ let messages = {
   },
   2: {
     messageId: '2',
-    text: 'By World',
+    text: 'Bye World',
     to: '2',
     from: '1',
   },

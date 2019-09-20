@@ -19,7 +19,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import uuidv4 from 'uuid/v4';
-import models from './models';
+import models from './models/index';
 
 const app = express();
 app.use(cors());
@@ -51,8 +51,8 @@ app.get('/users', (req, res) => {
   return res.send(Object.values(req.context.models.users));
 });
 
-app.get('/users/:userId', (req, res) => {
-  return res.send(req.context.models.users[req.params.userId]);
+app.get('/users/:id', (req, res) => {
+  return res.send(req.context.models.users[req.params.id]);
 });
 
 app.get('/messages', (req, res) => {
@@ -115,9 +115,22 @@ app.put('/users/:userId', (req, res) => {
 // DELETE
 
 app.delete('/users/:userId', (req, res) => {
-  return res.send(
-    `DELETE HTTP method on user/${req.params.userId} resource`,
-  );
+  
+	const userId = parseInt(req.params.userId, 10);
+	let index = userId-1;
+
+	if(models.users[index].id == userId){
+		models.users.splice(index, 1);
+		return res.status(200).send({
+			success: 'true',
+			message: 'User deleted successfully',
+		});
+	}
+	
+	return res.status(404).send({
+		success: 'false',
+		message: 'User not found',
+	});
 });
 
 app.delete('/messages/:messageId', (req, res) => {
